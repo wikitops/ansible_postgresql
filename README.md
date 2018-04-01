@@ -56,11 +56,7 @@ To deploy the Postgresql cluster, you just have to run the Ansible playbook post
 ansible-playbook postgresql.yml
 ```
 
-If everything run as expected, you should get the cluster information with this command :
-
-```
-TODDDDDDDDDDDDDDDDDDDOOOOOOOOOOOOOOOOOOOOOOOOOOO
-```
+If everything run as expected, you should connect to postgres master node and create an object like a database. Every change on master node should be replicate on slave nodes automaticaly.
 
 #### Destroy
 
