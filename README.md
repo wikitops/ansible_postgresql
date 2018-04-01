@@ -1,5 +1,5 @@
 # Ansible : Playbook Postgresql
-The aim of this project is to deploy a Postgresql cluster on Vagrant with a basic configuration replication.
+The aim of this project is to deploy a Postgresql cluster on Vagrant with a basic replication.
 
 ## Getting Started
 
