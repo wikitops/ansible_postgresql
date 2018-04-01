@@ -1,0 +1,51 @@
+---
+
+postgres_data_directory: "/var/lib/postgresql/{{ postgres_version }}/main"
+postgres_listen_addresses: "*"
+postgres_port: "5432"
+postgres_max_connections: "100"
+postgres_cluster_name: default
+
+postgres_shared_buffers: 512MB
+postgres_hug_pages: try
+postgres_temp_buffers: 8MB
+postgres_max_prepared_transactions: 0
+postgres_work_mem: 8MB
+postgres_maintenance_work_mem: 64MB
+postgres_autovacuum_work_mem: 64MB
+
+postgres_wal_level: replica
+postgres_synchronous_commit: local
+postgres_wal_buffers: 1MB
+postgres_max_wal_size:
+postgres_min_wal_size:
+postgres_archive_directory: "{{ postgres_data_directory }}/archive"
+postgres_archive_command: 'cp %p {{ postgres_archive_directory }}/%f'
+
+postgres_max_wal_senders: 2
+postgres_wal_keep_segments: 10
+postgres_synchronous_standby_names: "*"
+
+postgres_checkpoint_completion_target: 0.9
+
+postgres_effective_cache_size: 1500MB
+
+postgres_random_page_cost: 1.1
+
+postgres_log_destination: stderr
+postgres_log_directory: pg_log
+postgres_log_filename: "postgresql-%Y-%m-%d_%H%M%S.log"
+postgres_file_mode: "0600"
+postgres_log_truncate_on_rotation: off
+postgres_log_rotation_age: 1d
+postgres_log_rotation_size: 10MB
+postgres_client_min_messages: warning
+postgres_log_min_messages: warning
+postgres_log_min_error_statement: error
+postgres_log_min_duration_statement: "-1"
+postgres_log_line_prefix: "%m [%p] %q%u@%d "
+
+postgres_autovaccum: on
+
+postgres_replication_user: replica
+postgres_replication_password: ECRejDn43n

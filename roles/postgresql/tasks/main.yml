@@ -1,0 +1,27 @@
+---
+
+- name: POSTGRESQL | Install prerequisites packages
+  apt:
+    name: python-pip
+    state: present
+
+- name: POSTGRESQL | Add repository key
+  apt_key:
+    url: "{{ postgres_apt_key }}"
+    state: present
+
+- name: POSTGRESQL | Add repository
+  apt_repository:
+    repo: "{{ postgres_apt_url }}"
+    state: present
+
+- name: POSTGRESQL | Install package
+  apt:
+    name: "postgresql-{{ postgres_version }}"
+    state: present
+    update_cache: yes
+
+- name: POSTGRESQL | Install psycopg2 python module
+  pip:
+    name: psycopg2
+    state: latest
