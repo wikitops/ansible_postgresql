@@ -45,7 +45,7 @@ postgres_log_min_error_statement: error
 postgres_log_min_duration_statement: "-1"
 postgres_log_line_prefix: "%m [%p] %q%u@%d "
 
-postgres_autovaccum: on
+postgres_autovaccum: "on"
 
 postgres_replication_user: replica
 postgres_replication_password: ECRejDn43n

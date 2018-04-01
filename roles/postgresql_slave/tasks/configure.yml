@@ -12,7 +12,7 @@
 
 - name: POSTGRESQL | Check configuration
   stat:
-    path: "/etc/postgresql/{{ postgres_version }}/main/recovery.conf"
+    path: "/var/lib/postgresql/{{ postgres_version }}/main/recovery.conf"
   register: init_slave
 
 - name: POSTGRESQL | Run base backup
@@ -26,8 +26,8 @@
 
 - name: POSTGRESQL | Deploy recovery file
   template:
-    src: "etc/postgresql/{{ postgres_version }}/main/recovery.conf.j2"
-    dest: "/etc/postgresql/{{ postgres_version }}/main/recovery.conf"
+    src: "var/lib/postgresql/{{ postgres_version }}/main/recovery.conf.j2"
+    dest: "/var/lib/postgresql/{{ postgres_version }}/main/recovery.conf"
     owner: postgres
     group: postgres
     mode: 0600
