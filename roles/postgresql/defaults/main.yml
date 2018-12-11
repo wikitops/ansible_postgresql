@@ -1,5 +1,37 @@
 ---
 
-postgres_version: "9.6"
+###
+# POSTGRESQL
+###
+
+# Version
+postgres_version: "11"
+
+# Debian
 postgres_apt_key: "https://www.postgresql.org/media/keys/ACCC4CF8.asc"
-postgres_apt_url: "deb http://apt.postgresql.org/pub/repos/apt/ xenial-pgdg main"
+postgres_apt_url: "deb http://apt.postgresql.org/pub/repos/apt/ {{ ansible_distribution_release }}-pgdg main"
+
+# RedHat
+postgres_yum_repo: "https://download.postgresql.org/pub/repos/yum/{{ postgres_version }}/redhat/rhel-7-x86_64/pgdg-centos{{ postgres_version }}-11-2.noarch.rpm"
+
+# User
+postgres_user: postgres
+postgres_group: postgres
+
+# Secure access
+postgres_hba_host: []
+  # - type: host
+  #   database: all
+  #   user: all
+  #   address: 127.0.0.1/32
+  #   method: md5
+
+# Configuration
+postgres_data_directory: "{{ postgres_data_dir }}"
+postgres_hba_file: "/etc/postgresql/{{ postgres_version }}/main/pg_hba.conf"
+postgres_ident_file: "/etc/postgresql/{{ postgres_version }}/main/pg_ident.conf"
+postgres_external_pid_file: "/var/run/postgresql/{{ postgres_version }}-main.pid"
+postgres_listen_addresses: "*"
+postgres_port: 5432
+postgres_max_connections: 100
+postgres_unix_socket_directories: "/var/run/postgresql"

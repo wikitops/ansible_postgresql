@@ -1,15 +1,7 @@
 ---
 
-- hosts: master
+- hosts: postgresql
   remote_user: vagrant
   become: yes
   roles:
-    - postgresql_master
-  tags: master
-
-- hosts: slaves
-  remote_user: vagrant
-  become: yes
-  roles:
-    - postgresql_slave
-  tags: slave
+    - postgresql

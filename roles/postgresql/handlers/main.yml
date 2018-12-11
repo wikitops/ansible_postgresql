@@ -2,11 +2,11 @@
 
 - name: restart postgresql
   systemd:
-    name: postgresql
+    name: "{{ postgres_bin }}"
     state: restarted
     enabled: true
 
 - name: reload postgresql
   systemd:
-    name: postgresql
+    name: "{{ postgres_bin }}"
     state: reloaded

@@ -1,0 +1,31 @@
+---
+
+dependencies:
+
+  - role: pip
+    vars:
+      pip_packages:
+        - psycopg2
+
+galaxy_info:
+  author: wikitops
+  description: Postgresql for Linux.
+  company: "Wikitops"
+  license: "license (BSD, MIT)"
+  min_ansible_version: 2.4
+  platforms:
+    - name: EL
+      versions:
+        - 7
+    - name: Debian
+      versions:
+        - wheezy
+        - stretch
+    - name: Ubuntu
+      versions:
+        - xenial
+        - bionic
+  galaxy_tags:
+    - postgresql
+    - psql
+    - database

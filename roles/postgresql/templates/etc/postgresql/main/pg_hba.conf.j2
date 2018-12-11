@@ -1,3 +1,5 @@
+# {{ ansible_managed }}
+
 # PostgreSQL Client Authentication Configuration File
 # ===================================================
 #
@@ -97,6 +99,8 @@ host    all             all             ::1/128                 md5
 #local   replication     postgres                                peer
 host    replication     postgres        127.0.0.1/32            md5
 #host    replication     postgres        ::1/128                 md5
-{% for host in groups['slaves'] %}
-host    replication     {{ postgres_replication_user }}         {{ host }}/32   md5
+
+# Ansible definition
+{% for host in postgres_hba_host %}
+{{ host.type }} {{ host.database }} {{ host.user }} {{ host.address|default('') }} {{ host.auth_method | default('md5') }}
 {% endfor %}

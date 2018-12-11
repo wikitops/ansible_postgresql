@@ -1,27 +1,18 @@
 ---
 
-- name: POSTGRESQL | Install prerequisites packages
-  apt:
-    name: python-pip
-    state: present
+- name: POSTGRESQL | Include OS-specific variables
+  include_vars: "{{ ansible_os_family }}.yml"
 
-- name: POSTGRESQL | Add repository key
-  apt_key:
-    url: "{{ postgres_apt_key }}"
-    state: present
+- name: POSTGRESQL | Manage Debian environment
+  import_tasks: debian.yml
+  when: ansible_os_family == 'Debian'
 
-- name: POSTGRESQL | Add repository
-  apt_repository:
-    repo: "{{ postgres_apt_url }}"
-    state: present
+- name: POSTGRESQL | Manage RedHat environment
+  import_tasks: redhat.yml
+  when: ansible_os_family == 'RedHat'
 
-- name: POSTGRESQL | Install package
-  apt:
-    name: "postgresql-{{ postgres_version }}"
-    state: present
-    update_cache: yes
+- name: POSTGRESQL | Initialize default databases
+  import_tasks: init.yml
 
-- name: POSTGRESQL | Install psycopg2 python module
-  pip:
-    name: psycopg2
-    state: latest
+- name: POSTGRESQL | Configuration
+  import_tasks: configure.yml

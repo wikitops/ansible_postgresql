@@ -1,0 +1,19 @@
+---
+
+- name: POSTGRESQL CONFIGURE | Configuration
+  template:
+    src: "etc/postgresql/main/postgresql.conf.j2"
+    dest: "{{ postgres_config_dir }}/postgresql.conf"
+    owner: "{{ postgres_user }}"
+    group: "{{ postgres_group }}"
+    mode: 0644
+  notify: reload postgresql
+
+- name: POSTGRESQL CONFIGURE | Manage access
+  template:
+    src: "etc/postgresql/main/pg_hba.conf.j2"
+    dest: "{{ postgres_config_dir }}/pg_hba.conf"
+    owner: "{{ postgres_user }}"
+    group: "{{ postgres_group }}"
+    mode: 0644
+  notify: restart postgresql

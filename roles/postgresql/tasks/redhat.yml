@@ -1,0 +1,16 @@
+---
+
+- name: POSTGRESQL REDHAT | Install repository
+  yum:
+    name: "{{ postgres_yum_repo }}"
+    state: present
+
+- name: POSTGRESQL REDHAT | Installation
+  package:
+    name:
+      - postgresql{{ postgres_version }}
+      - postgresql{{ postgres_version }}-server
+      - postgresql{{ postgres_version }}-contrib
+      - postgresql{{ postgres_version }}-libs
+    state: present
+    update_cache: yes

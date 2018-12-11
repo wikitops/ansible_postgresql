@@ -1,4 +1,0 @@
-standby_mode = 'on'
-primary_conninfo = 'host={{ groups['master'][0] }} port={{ postgres_port}} user={{ postgres_replication_user}} password={{ postgres_replication_password }} application_name={{ inventory_hostname }}'
-restore_command = 'cp /var/lib/postgresql/{{ postgres_version }}/main/archive/%f %p'
-trigger_file = '/tmp/postgresql.trigger.{{ postgres_port }}'
