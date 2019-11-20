@@ -12,6 +12,13 @@
 
 - name: POSTGRESQL DEBIAN | Installation
   package:
-    name: "postgresql-{{ postgres_version }}"
+    name:
+      - libpq-dev
+      - "postgresql-{{ postgres_version }}"
     state: present
     update_cache: yes
+
+- name: POSTGRESQL DEBIAN | Install Ansible prerequisites
+  pip:
+    name: psycopg2
+    state: present

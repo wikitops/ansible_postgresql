@@ -1,0 +1,11 @@
+---
+
+- name: POSTGRESQL PREREQUISITES | Install package
+  package:
+    name: libpq-dev
+    state: present
+
+- name: POSTGRESQL PREREQUISITES | Install Ansible dependencies
+  pip:
+    name: psycopg2
+    state: present

@@ -12,5 +12,11 @@
       - postgresql{{ postgres_version }}-server
       - postgresql{{ postgres_version }}-contrib
       - postgresql{{ postgres_version }}-libs
+      - libpq-dev
     state: present
     update_cache: yes
+
+- name: POSTGRESQL REDHAT | Install Ansible prerequisites
+  pip:
+    name: psycopg2
+    state: present
